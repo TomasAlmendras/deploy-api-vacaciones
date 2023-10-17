@@ -1,0 +1,87 @@
+
+### ABM de administradores
+
+### Obtener todos los administradores
+GET http://localhost:1234/admins
+
+### Insertar un administrador
+POST http://localhost:1234/admins
+Content-Type: application/json
+
+{
+  "nombre": "Andres",
+  "apellido": "Messi",
+  "correo": "lio@gmail.com",
+  "usuario": "lio123",
+  "clave": "lio123"
+}
+
+### Borrar un administrador
+DELETE http://localhost:1234/admins/10
+
+### Actualizar un administrador
+PATCH http://localhost:1234/admins/10
+Content-Type: application/json
+
+{
+  "estado": "Activo"
+}
+
+### ABM de empleados
+
+### Obtener todos los empleados
+GET http://localhost:1234/employees
+
+### Insertar un empleado
+POST http://localhost:1234/employees
+Content-Type: application/json
+
+{
+  "nombre": "Franco",
+  "apellido": "Perez",
+  "fechaNacimiento": "1962-10-12",
+  "documento": "41827952",
+  "correo": "frankito@gmail.com",
+  "direccion": "Zavaleta 202",
+  "fechaIngreso": "2019-09-01",
+  "departamento": "Selección y contratación",
+  "puesto": "Especialista en reclutamiento",
+  "usuario": "franco",
+  "clave": "franco"
+}
+
+### Borrar un empleado
+DELETE http://localhost:1234/employees/6
+
+### Modificar un empleado
+PATCH http://localhost:1234/employees/6
+Content-Type: application/json
+
+{
+  "estado": "activo"
+}
+
+### ABM de vacaciones
+
+### Obtener todas las vacaciones
+GET http://localhost:1234/vacations
+
+### Insertar vacaciones
+POST http://localhost:1234/vacations
+Content-Type: application/json
+
+{
+  "fechaInicio": "2023-10-18",
+  "fechaFin": "2023-10-29",
+  "comentarios": "reposo medico",
+  "legajo_id": 4,
+  "administrador_id": 5
+}
+
+### Modificar vacaciones
+PATCH http://localhost:1234/vacations/2
+Content-Type: application/json
+
+{
+  "estado": "ACEPTADO"
+}
