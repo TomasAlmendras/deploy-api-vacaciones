@@ -57,4 +57,49 @@ export class AdminModel {
       throw new Error('Administrador no encontrado')
     }
   }
+  static async adminLogin({ username, password }) {
+    try {
+      const sql = 'CALL usp_ConsultarIdentificadoresUsuarios()'
+      const [rows] = await connection.query(sql)
+
+      if (rows[0] && rows[0].length > 0) {
+        for (const user of rows[0]) {
+          if (user.nombre === username && user.clave === password) {
+            if (user.documento === null) {
+              return {
+                success: true,
+                message: 'Inicio de sesión exitoso',
+                username: user.nombre,
+                rol: true,
+              }
+            } else {
+              return {
+                success: true,
+                message: 'Inicio de sesión exitoso',
+                username: user.nombre,
+                rol: false,
+              }
+            }
+          }
+        }
+        console.log('Credenciales incorrectas')
+        return {
+          success: false,
+          message: 'Credenciales incorrectas',
+        }
+      } else {
+        console.log('Usuario no encontrado')
+        return {
+          success: false,
+          message: 'Usuario no encontrado',
+        }
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error)
+      return {
+        success: false,
+        message: 'Error al iniciar sesión',
+      }
+    }
+  }
 }

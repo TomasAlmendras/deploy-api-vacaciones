@@ -8,6 +8,7 @@ export const createAdminRouter = ({ adminModel }) => {
 
   adminRouter.get('/', adminController.getAllAdmin)
   adminRouter.post('/', adminController.createAdmin)
+  adminRouter.post('/login', adminController.adminLogin)
   adminRouter.delete('/:id', adminController.deleteAdminById)
   adminRouter.patch('/:id', adminController.updateAdminById)
 

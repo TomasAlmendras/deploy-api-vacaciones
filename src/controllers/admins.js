@@ -54,4 +54,16 @@ export class AdminController {
       }
     }
   }
+
+  adminLogin = async (req, res) => {
+    try {
+      const { username, password } = req.body
+      const result = await this.adminModel.adminLogin({ username, password })
+
+      res.json(result)
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error)
+      res.status(500).json({ error: 'Error al iniciar sesión' })
+    }
+  }
 }
